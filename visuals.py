@@ -1,5 +1,6 @@
 import tkinter as tk
 from core_calculations import avg_grade, avg_attendance, num_passed, num_grades, num_failed
+from graphs import grade_age, attendance_grade, attendance_age, make_graph
 from tkinter import ttk
 # ttk contains the new widgets from 2007
 
@@ -40,6 +41,9 @@ tk.Button(root, text="Average Attendance", command=lambda: show("Average Attenda
 tk.Button(root, text="Number Of Passes", command=lambda: show("Number Of Passes", num_passed())).pack(pady=10)
 tk.Button(root, text="Number Of Fails", command=lambda: show("Number Of Fails", num_failed())).pack(pady=10)
 tk.Button(root, text="Number Of Grades", command=lambda: show("Number Of Grades", num_grades())).pack(pady=10)
+tk.Button(root, text="Grades Vs Age", command=lambda: show("Grades Vs Age", make_graph('age', 'grade'))).pack(pady=10)
+tk.Button(root, text="Attendance Vs Age", command=lambda: show("Attendance Vs Age", make_graph('age', 'attendance'))).pack(pady=10)
+tk.Button(root, text="Attendance Vs Grade", command=lambda: show("Attendance Vs Grade", make_graph('attendance', 'grade'))).pack(pady=10)
 
 try:
     # this stops the text from being blury
