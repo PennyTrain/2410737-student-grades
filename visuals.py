@@ -41,9 +41,9 @@ tk.Button(root, text="Average Attendance", command=lambda: show("Average Attenda
 tk.Button(root, text="Number Of Passes", command=lambda: show("Number Of Passes", num_passed())).pack(pady=10)
 tk.Button(root, text="Number Of Fails", command=lambda: show("Number Of Fails", num_failed())).pack(pady=10)
 tk.Button(root, text="Number Of Grades", command=lambda: show("Number Of Grades", num_grades())).pack(pady=10)
-tk.Button(root, text="Grades Vs Age", command=lambda: show("Grades Vs Age", make_graph('age', 'grade'))).pack(pady=10)
-tk.Button(root, text="Attendance Vs Age", command=lambda: show("Attendance Vs Age", make_graph('age', 'attendance'))).pack(pady=10)
-tk.Button(root, text="Attendance Vs Grade", command=lambda: show("Attendance Vs Grade", make_graph('attendance', 'grade'))).pack(pady=10)
+tk.Button(root, text="Grades Vs Age", command=lambda: ("Grades Vs Age", make_graph('age', 'grade'))).pack(pady=10)
+tk.Button(root, text="Attendance Vs Age", command=lambda: ("Attendance Vs Age", make_graph('age', 'attendance'))).pack(pady=10)
+tk.Button(root, text="Attendance Vs Grade", command=lambda: ("Attendance Vs Grade", make_graph('attendance', 'grade'))).pack(pady=10)
 
 try:
     # this stops the text from being blury

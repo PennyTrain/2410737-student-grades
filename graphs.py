@@ -13,8 +13,7 @@ avg_att_by_grade = df.groupby("grade")["attendance"].mean().reset_index().sort_v
 
 def grade_age():
     """Average Grade by Age"""
-    plt.bar(avg_grade_by_age["age"], avg_grade_by_age["grade"],
-            color="skyblue", edgecolor="black")
+    plt.bar(avg_grade_by_age["age"], avg_grade_by_age["grade"])
     plt.title("Average Grade by Age")
     plt.xlabel("Age")
     plt.ylabel("Average Grade")
@@ -23,8 +22,7 @@ def grade_age():
 
 def attendance_age():
     """Average Attendance by Age"""
-    plt.bar(avg_att_by_age["age"], avg_att_by_age["attendance"],
-            color="lightgreen", edgecolor="black")
+    plt.bar(avg_att_by_age["age"], avg_att_by_age["attendance"])
     plt.title("Average Attendance by Age")
     plt.xlabel("Age")
     plt.ylabel("Average Attendance")
@@ -32,7 +30,7 @@ def attendance_age():
     plt.show()
 
 def attendance_grade():
-    plt.scatter(df["attendance"], df["grade"], alpha=0.6, edgecolor="black")
+    plt.scatter(df["attendance"], df["grade"], alpha=0.6)
     plt.title("Grades vs Attendance")
     plt.xlabel("Attendance (%)")
     plt.ylabel("Grade")
@@ -41,12 +39,28 @@ def attendance_grade():
     plt.tight_layout()
     plt.show()
 
+def pink_theme():
+    plt.style.use("seaborn-v0_8-whitegrid")
+    plt.rcParams["axes.facecolor"] = "#ffe6f2"
+    plt.rcParams["figure.facecolor"] = "#ffb6c1"
+    plt.rcParams["axes.labelcolor"] = "#4a004a"
+    plt.rcParams["text.color"] = "#4a004a"
+    plt.rcParams["axes.edgecolor"] = "#e91e63"
+    plt.rcParams["xtick.color"] = "#880e4f"
+    plt.rcParams["ytick.color"] = "#880e4f"
+
 def make_graph(x, y):
+    plt.close('all')
+    plt.rcParams.update(plt.rcParamsDefault)
     if x == 'attendance' and y == 'grade':
+        pink_theme()
         attendance_grade()
     elif x == 'age' and y == 'grade':
+        pink_theme()
         grade_age()
+
     elif x == 'age' and y == 'attendance':
+        pink_theme()
         attendance_age()
     else:
         print("That graph type isn't defined yet.")
