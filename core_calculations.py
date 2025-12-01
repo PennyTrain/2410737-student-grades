@@ -29,7 +29,6 @@ def num_failed():
     return _count_by_condition("grade < 40")
 
 def num_grades():
-    """Return a dictionary of grade counts."""
     c.execute("""
         SELECT
             SUM(CASE WHEN grade >= 70 THEN 1 ELSE 0 END) AS A_count,
@@ -40,9 +39,3 @@ def num_grades():
     row = c.fetchone() or (0, 0, 0)
     A_count, B_count, C_count = row
     return {"A": A_count, "B": B_count, "C": C_count}
-
-print(avg_grade())
-print(avg_attendance())
-print(num_grades())
-print(num_passed())
-print(num_failed())
