@@ -1,6 +1,6 @@
 import tkinter as tk
 from core_calculations import avg_grade, avg_attendance, num_passed, num_grades, num_failed
-from graphs import grade_age, attendance_grade, attendance_age, make_graph
+from graphs import make_graph
 from tkinter import ttk
 # ttk contains the new widgets from 2007
 
