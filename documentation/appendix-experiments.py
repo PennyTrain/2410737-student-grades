@@ -1,5 +1,6 @@
 import sqlite3
 import pandas as pd
+import os
 
 # Connect to SQLite database
 conn = sqlite3.connect(r"./student-data/student_grades.db")
@@ -47,3 +48,8 @@ conn.close()
 
 # I reach for Pandas when I want quick prototyping or simple workflows.
 # I use raw sqlite3 when I need a strict, well-defined schema or I’m building something production-ready.
+
+# this clears the terminal to make it ready for new content
+# https://stackoverflow.com/questions/2084508/clear-the-terminal-in-python
+def clear():
+    os.system('cls' if os.name == 'nt' else 'clear')
