@@ -7,16 +7,22 @@ c = conn.cursor()
 atexit.register(conn.close)
 
 def avg_grade():
-    c.execute("SELECT AVG(grade) FROM student")
-    result = c.fetchone()
-    average = result[0]
-    return average
+    return get_avg('grade')
 
 def avg_attendance():
-    c.execute("SELECT AVG(attendance) FROM student")
-    result = c.fetchone()
-    average = result[0]
-    return average
+    return get_avg('attendance')
+
+def get_avg(condition):   
+    try:
+        c.execute(f"SELECT AVG({condition}) FROM student")
+        result = c.fetchone()
+        if result and result[0] is not None:
+            average = result[0]
+            return average
+        else:
+            return ("No attendance found in the database")
+    except Exception as e:
+        return (f"Error fetching average attendance: {e}")
 
 def _count_by_condition(condition):
     c.execute(f"SELECT COUNT(*) FROM student WHERE {condition};")
