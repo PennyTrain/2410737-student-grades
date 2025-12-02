@@ -17,7 +17,7 @@ root.title('PennysProj')
 # +y = 50, means that the windows veritcal position will be 50 pixels below the top of the screen
 # root.geometry('600x400+50+50')
 window_width = 500
-window_height = 750
+window_height = 900
 # get the screen dimension
 screen_width = root.winfo_screenwidth()
 screen_height = root.winfo_screenheight()
@@ -48,15 +48,15 @@ tk.Button(root, text="Attendance Vs Grade", command=lambda: ("Attendance Vs Grad
 
 # https://pythonguides.com/python-tkinter-search-box/
 search_var = tk.StringVar()
+details_label = tk.Label(root, font=("Arial", 12), justify="left")
+details_label.pack(pady=10)
 search_entry = tk.Entry(root, textvariable=search_var, font=("Arial", 12))
 search_entry.pack()
-
 suggestion_list = tk.Listbox(root, font=("Arial", 12))
 suggestion_list.pack()
-
 search_var.trace("w", lambda *args: update_suggestions(search_var, suggestion_list))
-suggestion_list.bind("<<ListboxSelect>>", lambda event: select_suggestion(event, search_var, suggestion_list, lambda: perform_search(search_var)))
-search_entry.bind("<Return>", lambda event: perform_search(search_var))
+suggestion_list.bind("<<ListboxSelect>>", lambda event: select_suggestion(event, search_var, suggestion_list, lambda: perform_search(search_var, details_label)))
+search_entry.bind("<Return>", lambda event: perform_search(search_var, details_label))
 
 
 try:
