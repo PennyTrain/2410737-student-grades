@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 # library for data analysis
 import numpy as np
+from styles import pink_theme, blue_theme
 # numerical tool (helps do math)
 
 conn = sqlite3.connect("student-data/student_grades.db")
@@ -62,18 +63,6 @@ def attendance_grade():
     plt.tight_layout()
     plt.show()
 
-def pink_theme():
-    plt.style.use("seaborn-v0_8-whitegrid")
-    plt.rcParams["axes.facecolor"] = "#ffe6f2"
-    plt.rcParams["figure.facecolor"] = "#ffb6c1"
-    plt.rcParams["axes.labelcolor"] = "#000000"
-    plt.rcParams["text.color"] = "#000000"
-    plt.rcParams["axes.edgecolor"] = "#e91e63"
-    plt.rcParams["xtick.color"] = "#000000"
-    plt.rcParams["ytick.color"] = "#000000"
-    plt.rcParams["axes.prop_cycle"] = plt.cycler(color=["#cc00ff"])  # all plots pink
-    # plt.rcParams customizes global defaults like background
-    # plt.style.use applies a style sheet
 
 def make_graph(x, y):
     plt.close('all')
@@ -86,7 +75,7 @@ def make_graph(x, y):
         attendance_grade()
         # gets correct graph based on button value
     elif x == 'age' and y == 'grade':
-        pink_theme()
+        blue_theme()
         grade_age()
 
     elif x == 'age' and y == 'attendance':
