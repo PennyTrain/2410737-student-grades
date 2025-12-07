@@ -19,34 +19,34 @@ import pandas as pd
 
 
 # AND IN CLASS TEACHING
-import sqlite3
+# import sqlite3
 
-conn = sqlite3.connect('test.db')
-cursor = conn.cursor()
+# conn = sqlite3.connect('test.db')
+# cursor = conn.cursor()
 
-cursor.execute(
-    '''
-    CREATE TABLE IF NOT EXISTS students (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        name TEXT NOT NULL,
-        age INTEGER NOT NULL,
-        email TEXT UNIQUE NOT NULL
-    );
-    '''
-)
+# cursor.execute(
+#     '''
+#     CREATE TABLE IF NOT EXISTS students (
+#         id INTEGER PRIMARY KEY AUTOINCREMENT,
+#         name TEXT NOT NULL,
+#         age INTEGER NOT NULL,
+#         email TEXT UNIQUE NOT NULL
+#     );
+#     '''
+# )
 
-conn.commit()
+# conn.commit()
 
-cursor.execute(
-    '''
-    INSERT INTO students(name, age, email)
-    VALUES (?,?,?)
-    ''',
-    ("slaa", 20, "slaa@omg.com")
-)
+# cursor.execute(
+#     '''
+#     INSERT INTO students(name, age, email)
+#     VALUES (?,?,?)
+#     ''',
+#     ("slaa", 20, "slaa@omg.com")
+# )
 
-conn.commit()
-conn.close()
+# conn.commit()
+# conn.close()
 
 
 
