@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 # library for data analysis
 import numpy as np
-from styles import pink_theme, blue_theme
+from styles import pink_theme, blue_theme, purple_theme
 # numerical tool (helps do math)
 
 conn = sqlite3.connect("student-data/student_grades.db")
@@ -79,7 +79,11 @@ def make_graph(x, y):
         grade_age()
 
     elif x == 'age' and y == 'attendance':
-        pink_theme()
+        purple_theme()
         attendance_age()
     else:
         print("That graph type isn't defined yet.")
+
+
+
+

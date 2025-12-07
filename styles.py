@@ -61,3 +61,17 @@ def blue_theme():
     plt.rcParams["axes.prop_cycle"] = plt.cycler(color=["#04044e"])  # all plots pink
     # plt.rcParams customizes global defaults like background
     # plt.style.use applies a style sheet
+
+def purple_theme():
+    plt.style.use("seaborn-v0_8-whitegrid")
+    plt.rcParams["axes.facecolor"] = "#dec0ff"
+    plt.rcParams["figure.facecolor"] = "#d888f5"
+    plt.rcParams["axes.labelcolor"] = "#000000"
+    plt.rcParams["text.color"] = "#000000"
+    plt.rcParams["axes.edgecolor"] = "#a91ee9"
+    plt.rcParams["xtick.color"] = "#000000"
+    plt.rcParams["ytick.color"] = "#000000"
+    plt.rcParams["axes.prop_cycle"] = plt.cycler(color=["#300241"])  # all plots pink
+    # plt.rcParams customizes global defaults like background
+    # plt.style.use applies a style sheet
+
