@@ -28,6 +28,7 @@ center_y = int(screen_height/2 - window_height / 2)
 # set the position of the window to the center of the screen
 root.geometry(f'{window_width}x{window_height}+{center_x}+{center_y}')
 styles.apply_styles(root)
+styles.apply_background(root)
 # Title of the window
 message = ttk.Label(root, text="Student Grade Analysis", style="Custom.TLabel")
 message.pack()
@@ -39,26 +40,50 @@ def show(label_text, result):
     text = f"{label_text}: {result}" if result is not None else f"{label_text}: No data"
     result_label.config(text=text)
 
-ttk.Button(root, text="Average Grade", style="Custom.TButton",command=lambda: show("Average Grade", avg_grade())).pack()
+ttk.Button(root, text="Average Grade", style="Custom.TButton",command=lambda: show("Average Grade", avg_grade())).pack(pady=10)
 ttk.Button(root, text="Average Attendance", style="Custom.TButton",command=lambda: show("Average Attendance", avg_attendance())).pack(pady=10)
-ttk.Button(root, text="Number Of Passes", style="Custom.TButton",command=lambda: show("Number Of Passes", num_passed())).pack()
-ttk.Button(root, text="Number Of Fails", style="Custom.TButton",command=lambda: show("Number Of Fails", num_failed())).pack()
-ttk.Button(root, text="Number Of Grades", style="Custom.TButton",command=lambda: show("Number Of Grades", num_grades())).pack()
-ttk.Button(root, text="Grades Vs Age", style="Custom.TButton",command=lambda: ("Grades Vs Age", make_graph('age', 'grade'))).pack()
-ttk.Button(root, text="Attendance Vs Age", style="Custom.TButton",command=lambda: ("Attendance Vs Age", make_graph('age', 'attendance'))).pack()
-ttk.Button(root, text="Attendance Vs Grade", style="Custom.TButton",command=lambda: ("Attendance Vs Grade", make_graph('attendance', 'grade'))).pack()
+ttk.Button(root, text="Number Of Passes", style="Custom.TButton",command=lambda: show("Number Of Passes", num_passed())).pack(pady=10)
+ttk.Button(root, text="Number Of Fails", style="Custom.TButton",command=lambda: show("Number Of Fails", num_failed())).pack(pady=10)
+ttk.Button(root, text="Number Of Grades", style="Custom.TButton",command=lambda: show("Number Of Grades", num_grades())).pack(pady=10)
+ttk.Button(root, text="Grades Vs Age", style="Custom.TButton",command=lambda: ("Grades Vs Age", make_graph('age', 'grade'))).pack(pady=10)
+ttk.Button(root, text="Attendance Vs Age", style="Custom.TButton",command=lambda: ("Attendance Vs Age", make_graph('age', 'attendance'))).pack(pady=10)
+ttk.Button(root, text="Attendance Vs Grade", style="Custom.TButton",command=lambda: ("Attendance Vs Grade", make_graph('attendance', 'grade'))).pack(pady=10)
 
 # https://pythonguides.com/python-tkinter-search-box/
+# SEARCH FUNCTIONALITY
 search_var = tk.StringVar()
-search_entry = ttk.Entry(root, textvariable=search_var, font=("Arial", 12))
-search_entry.pack()
-suggestion_list = tk.Listbox(root, font=("Arial", 12))
-suggestion_list.pack()
+
+# Neon Entry
+search_entry = ttk.Entry(
+    root,
+    textvariable=search_var,
+    font=("Consolas", 12),
+    style="Neon.TEntry"
+)
+search_entry.pack(pady=(20, 5), ipady=3, ipadx=3)
+
+# Neon Listbox
+suggestion_list = tk.Listbox(root, font=("Consolas", 11))
+styles.style_listbox(suggestion_list)
+suggestion_list.pack(pady=5, fill="x", padx=20)
+
+# Neon label for details
 details_label = ttk.Label(root, style="Custom.TLabel", justify="left")
-details_label.pack(pady=10)
+details_label.pack(pady=10, padx=20, anchor="w")
+
+# Bindings
 search_var.trace("w", lambda *args: update_suggestions(search_var, suggestion_list))
-suggestion_list.bind("<<ListboxSelect>>", lambda event: select_suggestion(event, search_var, suggestion_list, lambda: perform_search(search_var, details_label)))
+suggestion_list.bind(
+    "<<ListboxSelect>>",
+    lambda event: select_suggestion(
+        event,
+        search_var,
+        suggestion_list,
+        lambda: perform_search(search_var, details_label)
+    )
+)
 search_entry.bind("<Return>", lambda event: perform_search(search_var, details_label))
+
 
 
 try:

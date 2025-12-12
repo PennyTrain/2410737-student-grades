@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 # library for data analysis
 import numpy as np
-from styles import pink_theme, blue_theme
+from styles import neon_cyan_theme, neon_green_theme, neon_magenta_theme
 # numerical tool (helps do math)
 
 conn = sqlite3.connect("student-data/student_grades.db")
@@ -24,7 +24,9 @@ avg_att_by_grade = df.groupby("grade")["attendance"].mean().reset_index().sort_v
 # and then with .mean() I am finding the groups mean
 # reset_index() turns the grouped index back into normal columns for easy plotting
 
+
 def grade_age():
+    plt.rcParams['toolbar'] = 'none' 
     # This function displays a graph comparing the age and grade
     plt.bar(avg_grade_by_age["age"], avg_grade_by_age["grade"])
     # creates a bar chart
@@ -70,16 +72,16 @@ def make_graph(x, y):
     plt.rcParams.update(plt.rcParamsDefault)
     # resets all the styles I have applies to make sure they do not stack
     if x == 'attendance' and y == 'grade':
-        pink_theme()
+        neon_cyan_theme()
         # applies theme
         attendance_grade()
         # gets correct graph based on button value
     elif x == 'age' and y == 'grade':
-        blue_theme()
+        neon_green_theme()
         grade_age()
 
     elif x == 'age' and y == 'attendance':
-        pink_theme()
+        neon_magenta_theme()
         attendance_age()
     else:
         print("That graph type isn't defined yet.")
