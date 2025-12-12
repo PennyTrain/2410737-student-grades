@@ -19,34 +19,34 @@ import pandas as pd
 
 
 # AND IN CLASS TEACHING
-import sqlite3
+# import sqlite3
 
-conn = sqlite3.connect('test.db')
-cursor = conn.cursor()
+# conn = sqlite3.connect('test.db')
+# cursor = conn.cursor()
 
-cursor.execute(
-    '''
-    CREATE TABLE IF NOT EXISTS students (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        name TEXT NOT NULL,
-        age INTEGER NOT NULL,
-        email TEXT UNIQUE NOT NULL
-    );
-    '''
-)
+# cursor.execute(
+#     '''
+#     CREATE TABLE IF NOT EXISTS students (
+#         id INTEGER PRIMARY KEY AUTOINCREMENT,
+#         name TEXT NOT NULL,
+#         age INTEGER NOT NULL,
+#         email TEXT UNIQUE NOT NULL
+#     );
+#     '''
+# )
 
-conn.commit()
+# conn.commit()
 
-cursor.execute(
-    '''
-    INSERT INTO students(name, age, email)
-    VALUES (?,?,?)
-    ''',
-    ("slaa", 20, "slaa@omg.com")
-)
+# cursor.execute(
+#     '''
+#     INSERT INTO students(name, age, email)
+#     VALUES (?,?,?)
+#     ''',
+#     ("slaa", 20, "slaa@omg.com")
+# )
 
-conn.commit()
-conn.close()
+# conn.commit()
+# conn.close()
 
 
 
@@ -91,30 +91,38 @@ conn.close()
 
 # WEB SCRAPING
 
-import requests
-from bs4 import BeautifulSoup
+# import requests
+# from bs4 import BeautifulSoup
 
-# path_to_scrape = requests.get("https://quotes.toscrape.com/")
+# # path_to_scrape = requests.get("https://quotes.toscrape.com/")
+
+# # soup = BeautifulSoup(path_to_scrape.text, "html.parser")
+
+# # # for link in soup.find_all("a"):
+# # #     print(link.get("href"), "-", link.text)
+
+# # quotes = soup.find_all("span", attrs={"class": "text"})
+# # authors = soup.find_all("small", attrs={"class": "author"})
+# # # print(authors, quotes)
+
+# # for quotes, authors in zip(quotes, authors):
+# #     print(quotes.text + " - " + authors.text)
+
+
+# path_to_scrape = requests.get("https://rholden-bs-dev.chi.ac.uk/scraping/demoscrapingpage.php")
 
 # soup = BeautifulSoup(path_to_scrape.text, "html.parser")
 
 # # for link in soup.find_all("a"):
 # #     print(link.get("href"), "-", link.text)
 
-# quotes = soup.find_all("span", attrs={"class": "text"})
-# authors = soup.find_all("small", attrs={"class": "author"})
-# # print(authors, quotes)
-
-# for quotes, authors in zip(quotes, authors):
-#     print(quotes.text + " - " + authors.text)
+# money = soup.find_all("p", attrs={"class": "price"})
+# print(money)
 
 
-path_to_scrape = requests.get("https://rholden-bs-dev.chi.ac.uk/scraping/demoscrapingpage.php")
 
-soup = BeautifulSoup(path_to_scrape.text, "html.parser")
 
-# for link in soup.find_all("a"):
-#     print(link.get("href"), "-", link.text)
 
-money = soup.find_all("p", attrs={"class": "price"})
-print(money)
+# UNIT TESTING
+
+

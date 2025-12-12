@@ -32,7 +32,7 @@ def num_passed():
     return _count_by_condition("grade >= 40")
 
 def num_failed():
-    return _count_by_condition("grade < 40")
+    return _count_by_condition("grade < 40") #move to constants, no number hard codes
 
 def num_grades():
     c.execute("""

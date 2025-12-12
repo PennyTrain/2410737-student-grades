@@ -44,7 +44,6 @@ with open('student-data/student_grades.csv') as file:
     next(contents)
     cleaned_data = []
     for row in contents:
-        row[7] = 1 if row[7].lower() == 'true' else 0
         cleaned_data.append(row[1:])
 
 # ignoring it if it already exists
