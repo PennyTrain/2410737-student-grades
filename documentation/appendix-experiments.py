@@ -92,6 +92,7 @@ import pandas as pd
 # WEB SCRAPING
 
 # import requests
+
 # from bs4 import BeautifulSoup
 
 # # path_to_scrape = requests.get("https://quotes.toscrape.com/")
