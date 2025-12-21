@@ -17,6 +17,7 @@ df = pd.read_sql_query("SELECT age, grade, attendance FROM student;", conn)
 # c.execute("SELECT age, grade, attendance FROM student")
 conn.close()
 
+# https://matplotlib.org/stable/users/getting_started/
 avg_grade_by_age = df.groupby("age")["grade"].mean().reset_index().sort_values("age")
 avg_att_by_age = df.groupby("age")["attendance"].mean().reset_index().sort_values("age")
 avg_att_by_grade = df.groupby("grade")["attendance"].mean().reset_index().sort_values("grade")
@@ -27,6 +28,7 @@ avg_att_by_grade = df.groupby("grade")["attendance"].mean().reset_index().sort_v
 
 def grade_age():
     plt.rcParams['toolbar'] = 'none' 
+    # gets rid of the toolbar on the graphs
     # This function displays a graph comparing the age and grade
     plt.bar(avg_grade_by_age["age"], avg_grade_by_age["grade"])
     # creates a bar chart
@@ -43,6 +45,7 @@ def grade_age():
 
 
 def attendance_age():
+    plt.rcParams['toolbar'] = 'none' 
     # this function displays a graph comparing the age and attendance
     plt.bar(avg_att_by_age["age"], avg_att_by_age["attendance"])
     plt.title("Average Attendance by Age")
@@ -52,6 +55,7 @@ def attendance_age():
     plt.show()
 
 def attendance_grade():
+    plt.rcParams['toolbar'] = 'none' 
     # this function displays a graph comparing attendance and grade
     plt.scatter(df["attendance"], df["grade"])
     # displays a scatter plot for each student
@@ -67,6 +71,7 @@ def attendance_grade():
 
 
 def make_graph(x, y):
+    # takes in x and y that are basically the rows of the database
     plt.close('all')
     # closes any open matplotlib windows, so that the plots do not stack
     plt.rcParams.update(plt.rcParamsDefault)

@@ -7,7 +7,6 @@ conn = sqlite3.connect("student-data/student_grades.db")
 c = conn.cursor()
 # python can now see the parent folder (where corecalc lives)
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-import database
 
 class TestSQLQueries(unittest.TestCase):
         def test_select_all_from_database(self):
@@ -29,7 +28,3 @@ class TestSQLQueries(unittest.TestCase):
                 ]
 
                 self.assertEqual(result, expected)
-
-if __name__ == "__main__":
-    unittest.main()
-                     

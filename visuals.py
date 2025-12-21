@@ -12,13 +12,14 @@ root = tk.Tk()
 
 # CONTROLLING THE WINDOW
 # This changes the title of the window
-root.title('PennysProj')
+root.title('Student Grades')
 # window geomtry/ size and postion of the window
 # width x height and then +x +y 
 # +y = 50, means that the windows veritcal position will be 50 pixels below the top of the screen
 # root.geometry('600x400+50+50')
+#https://www.pythontutorial.net/tkinter/tkinter-ttk/
 window_width = 500
-window_height = 900
+window_height = 985
 # get the screen dimension
 screen_width = root.winfo_screenwidth()
 screen_height = root.winfo_screenheight()
@@ -39,7 +40,7 @@ result_label.pack()
 def show(label_text, result):
     text = f"{label_text}: {result}" if result is not None else f"{label_text}: No data"
     result_label.config(text=text)
-
+# https://www.w3schools.com/python/python_lambda.asp
 ttk.Button(root, text="Average Grade", style="Custom.TButton",command=lambda: show("Average Grade", avg_grade())).pack(pady=10)
 ttk.Button(root, text="Average Attendance", style="Custom.TButton",command=lambda: show("Average Attendance", avg_attendance())).pack(pady=10)
 ttk.Button(root, text="Number Of Passes", style="Custom.TButton",command=lambda: show("Number Of Passes", num_passed())).pack(pady=10)
@@ -53,25 +54,20 @@ ttk.Button(root, text="Attendance Vs Grade", style="Custom.TButton",command=lamb
 # SEARCH FUNCTIONALITY
 search_var = tk.StringVar()
 
-# Neon Entry
 search_entry = ttk.Entry(
     root,
     textvariable=search_var,
-    font=("Consolas", 12),
     style="Neon.TEntry"
 )
-search_entry.pack(pady=(20, 5), ipady=3, ipadx=3)
+search_entry.pack()
 
-# Neon Listbox
-suggestion_list = tk.Listbox(root, font=("Consolas", 11))
+suggestion_list = tk.Listbox(root)
 styles.style_listbox(suggestion_list)
 suggestion_list.pack(pady=5, fill="x", padx=20)
 
-# Neon label for details
-details_label = ttk.Label(root, style="Custom.TLabel", justify="left")
-details_label.pack(pady=10, padx=20, anchor="w")
+details_label = ttk.Label(root, style="Custom.TLabel")
+details_label.pack(anchor="w")
 
-# Bindings
 search_var.trace("w", lambda *args: update_suggestions(search_var, suggestion_list))
 suggestion_list.bind(
     "<<ListboxSelect>>",
@@ -93,8 +89,3 @@ try:
 finally:
     # mainloop ensures the window remains visible, without it will appear and disappear quickly
     root.mainloop()
-
-
-#REFERENCES
-#https://www.pythontutorial.net/tkinter/tkinter-ttk/
-
