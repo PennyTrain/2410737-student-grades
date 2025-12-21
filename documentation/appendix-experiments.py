@@ -91,30 +91,39 @@ import pandas as pd
 
 # WEB SCRAPING
 
-import requests
-from bs4 import BeautifulSoup
+# import requests
 
-# path_to_scrape = requests.get("https://quotes.toscrape.com/")
+# from bs4 import BeautifulSoup
+
+# # path_to_scrape = requests.get("https://quotes.toscrape.com/")
+
+# # soup = BeautifulSoup(path_to_scrape.text, "html.parser")
+
+# # # for link in soup.find_all("a"):
+# # #     print(link.get("href"), "-", link.text)
+
+# # quotes = soup.find_all("span", attrs={"class": "text"})
+# # authors = soup.find_all("small", attrs={"class": "author"})
+# # # print(authors, quotes)
+
+# # for quotes, authors in zip(quotes, authors):
+# #     print(quotes.text + " - " + authors.text)
+
+
+# path_to_scrape = requests.get("https://rholden-bs-dev.chi.ac.uk/scraping/demoscrapingpage.php")
 
 # soup = BeautifulSoup(path_to_scrape.text, "html.parser")
 
 # # for link in soup.find_all("a"):
 # #     print(link.get("href"), "-", link.text)
 
-# quotes = soup.find_all("span", attrs={"class": "text"})
-# authors = soup.find_all("small", attrs={"class": "author"})
-# # print(authors, quotes)
-
-# for quotes, authors in zip(quotes, authors):
-#     print(quotes.text + " - " + authors.text)
+# money = soup.find_all("p", attrs={"class": "price"})
+# print(money)
 
 
-path_to_scrape = requests.get("https://rholden-bs-dev.chi.ac.uk/scraping/demoscrapingpage.php")
 
-soup = BeautifulSoup(path_to_scrape.text, "html.parser")
 
-# for link in soup.find_all("a"):
-#     print(link.get("href"), "-", link.text)
 
-money = soup.find_all("p", attrs={"class": "price"})
-print(money)
+# UNIT TESTING
+
+

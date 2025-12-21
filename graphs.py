@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 # library for data analysis
 import numpy as np
-from styles import pink_theme, blue_theme, purple_theme
+from styles import neon_cyan_theme, neon_green_theme, neon_magenta_theme
 # numerical tool (helps do math)
 
 conn = sqlite3.connect("student-data/student_grades.db")
@@ -17,6 +17,7 @@ df = pd.read_sql_query("SELECT age, grade, attendance FROM student;", conn)
 # c.execute("SELECT age, grade, attendance FROM student")
 conn.close()
 
+# https://matplotlib.org/stable/users/getting_started/
 avg_grade_by_age = df.groupby("age")["grade"].mean().reset_index().sort_values("age")
 avg_att_by_age = df.groupby("age")["attendance"].mean().reset_index().sort_values("age")
 avg_att_by_grade = df.groupby("grade")["attendance"].mean().reset_index().sort_values("grade")
@@ -24,7 +25,10 @@ avg_att_by_grade = df.groupby("grade")["attendance"].mean().reset_index().sort_v
 # and then with .mean() I am finding the groups mean
 # reset_index() turns the grouped index back into normal columns for easy plotting
 
+
 def grade_age():
+    plt.rcParams['toolbar'] = 'none' 
+    # gets rid of the toolbar on the graphs
     # This function displays a graph comparing the age and grade
     plt.bar(avg_grade_by_age["age"], avg_grade_by_age["grade"])
     # creates a bar chart
@@ -41,6 +45,7 @@ def grade_age():
 
 
 def attendance_age():
+    plt.rcParams['toolbar'] = 'none' 
     # this function displays a graph comparing the age and attendance
     plt.bar(avg_att_by_age["age"], avg_att_by_age["attendance"])
     plt.title("Average Attendance by Age")
@@ -50,6 +55,7 @@ def attendance_age():
     plt.show()
 
 def attendance_grade():
+    plt.rcParams['toolbar'] = 'none' 
     # this function displays a graph comparing attendance and grade
     plt.scatter(df["attendance"], df["grade"])
     # displays a scatter plot for each student
@@ -65,21 +71,22 @@ def attendance_grade():
 
 
 def make_graph(x, y):
+    # takes in x and y that are basically the rows of the database
     plt.close('all')
     # closes any open matplotlib windows, so that the plots do not stack
     plt.rcParams.update(plt.rcParamsDefault)
     # resets all the styles I have applies to make sure they do not stack
     if x == 'attendance' and y == 'grade':
-        pink_theme()
+        neon_cyan_theme()
         # applies theme
         attendance_grade()
         # gets correct graph based on button value
     elif x == 'age' and y == 'grade':
-        blue_theme()
+        neon_green_theme()
         grade_age()
 
     elif x == 'age' and y == 'attendance':
-        purple_theme()
+        neon_magenta_theme()
         attendance_age()
     else:
         print("That graph type isn't defined yet.")
