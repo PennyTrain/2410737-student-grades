@@ -27,7 +27,7 @@ class TestCreateDB(unittest.TestCase):
                 # here I test that it has columns with names, and 
                 # if it does not i create one therefore causing a fail
                 with self.assertRaises(sqlite3.OperationalError): 
-                        database.c.execute("'''CREATE TABLE student \
+                        c.execute("'''CREATE TABLE student \
                       ( \
                           student_id           INTEGER PRIMARY KEY AUTOINCREMENT, \
                           first_name           TEXT    NOT NULL, \
