@@ -49,12 +49,8 @@ def num_grades():
     row = c.fetchone() or (0, 0, 0)
 
     grades = {"A": row[0], "B": row[1], "C": row[2]}
-    return formatgrades(grades)
-
-
-def formatgrades(grades):
     return (
-        f"\nGrade A: {grades['A']}\n"
+        f"Grade A: {grades['A']}\n"
         f"Grade B: {grades['B']}\n"
         f"Grade C: {grades['C']}"
     )
