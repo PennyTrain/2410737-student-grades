@@ -2,9 +2,8 @@ import unittest
 import sys
 import os
 import sqlite3
+from database import c
 
-conn = sqlite3.connect("student-data/student_grades.db")
-c = conn.cursor()
 # python can now see the parent folder (where corecalc lives)
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 

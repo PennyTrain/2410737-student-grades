@@ -11,7 +11,11 @@ def main():
     if not result.wasSuccessful():
         print("Tests failed now the app will not launch.")
         sys.exit(1)
-    visuals.app()
+    try:
+        visuals.app()
+    finally:
+        database.close_connection()
+        print("connection closed")
 
 
 if __name__ == "__main__":

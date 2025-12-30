@@ -54,9 +54,9 @@ def app():
         ("Number Of Passes", lambda: show("Number Of Passes", num_passed())),
         ("Number Of Fails", lambda: show("Number Of Fails", num_failed())),
         ("Number Of Grades", lambda: show("Number Of Grades", num_grades())),
-        ("Grades Vs Age", lambda: make_graph("age", "grade")),
-        ("Attendance Vs Age", lambda: make_graph("age", "attendance")),
-        ("Attendance Vs Grade", lambda: make_graph("attendance", "grade")),
+        ("Graph: Grades Vs Age", lambda: make_graph("age", "grade")),
+        ("Graph: Attendance Vs Age", lambda: make_graph("age", "attendance")),
+        ("Graph: Attendance Vs Grade", lambda: make_graph("attendance", "grade")),
     ]
 
     for index, (text, command) in enumerate(buttons):
@@ -78,7 +78,8 @@ def app():
 # https://pythonguides.com/python-tkinter-search-box/
 # SEARCH FUNCTIONALITY
     search_var = tk.StringVar()
-
+    search_label = ttk.Label(root, text="Search, Type Student Name:", style="Custom.TLabel")
+    search_label.pack()
     search_entry = ttk.Entry(
         root,
         textvariable=search_var,
@@ -104,6 +105,13 @@ def app():
         )
     )
     search_entry.bind("<Return>", lambda event: perform_search(search_var, details_label))
+
+    def close_window():
+        root.destroy()
+
+    button = ttk.Button(root, text="Quit", style="Custom.TButton", command=close_window)
+    button.pack()
+
 
     scrape_label = ttk.Label(root, text=web_scraped(), style="Custom.TLabel")
     scrape_label.pack()

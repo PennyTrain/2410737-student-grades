@@ -6,8 +6,8 @@ import pandas as pd
 import numpy as np
 from styles import neon_cyan_theme, neon_green_theme, neon_magenta_theme
 # numerical tool (helps do math)
+from database import conn
 
-conn = sqlite3.connect("student-data/student_grades.db")
 df = pd.read_sql_query("SELECT age, grade, attendance FROM student;", conn)
 # here I am using pandas to help me get the data from student_grades 
 # it is returning the results as a pandas dataframe
@@ -15,7 +15,7 @@ df = pd.read_sql_query("SELECT age, grade, attendance FROM student;", conn)
 # conn = sqlite3.connect("student-data/student_grades.db")
 # c = conn.cursor()
 # c.execute("SELECT age, grade, attendance FROM student")
-conn.close()
+
 
 # https://matplotlib.org/stable/users/getting_started/
 avg_grade_by_age = df.groupby("age")["grade"].mean().reset_index().sort_values("age")

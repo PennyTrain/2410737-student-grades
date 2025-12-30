@@ -2,9 +2,10 @@
 import csv
 import sqlite3
 
+conn = sqlite3.connect('student-data/student_grades.db')
+c = conn.cursor()
+
 def create_database():
-    conn = sqlite3.connect('student-data/student_grades.db')
-    c = conn.cursor()
 
     c.execute("SELECT name FROM sqlite_master WHERE type='table' AND name='student';")
     table_exists = c.fetchone()
@@ -61,6 +62,7 @@ def create_database():
 # for r in rows:
 #     print(r)
 
-    conn.commit()
-    conn.close()
-
+def close_connection():
+    if conn:
+        conn.close()
+        print("Database connection closed")

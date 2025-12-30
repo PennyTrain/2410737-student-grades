@@ -1,8 +1,6 @@
 import tkinter as tk
 import sqlite3
-
-conn = sqlite3.connect("student-data/student_grades.db")
-c = conn.cursor()
+from database import c
 
 # https://pythonguides.com/python-tkinter-search-box/
 
