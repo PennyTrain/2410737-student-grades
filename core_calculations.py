@@ -3,6 +3,7 @@ from database import c
 
 grade_condition = 40
 
+
 def avg_grade():
     return get_avg('grade')
 
@@ -12,7 +13,7 @@ def avg_attendance():
 
 
 def get_avg(condition):
-    # condition = to any database column 
+    # condition = to any database column
     # that could be averaged. so only integers
     # or floats!
     if c is None:
@@ -48,7 +49,6 @@ def count_by_condition(condition):
         return f"Error getting data from database: {e}"
 
 
-
 def num_passed():
     return count_by_condition(f"grade >= {grade_condition}")
 
@@ -63,12 +63,29 @@ def num_grades():
 
     try:
         c.execute("""
-            SELECT
-                SUM(CASE WHEN grade >= 70 THEN 1 ELSE 0 END) AS A,
-                SUM(CASE WHEN grade >= 60 AND grade < 70 THEN 1 ELSE 0 END) AS B,
-                SUM(CASE WHEN grade >= 50 AND grade < 60 THEN 1 ELSE 0 END) AS C
-            FROM student;
-        """)
+    SELECT
+        SUM(
+            CASE
+                WHEN grade >= 70 THEN 1
+                ELSE 0
+            END
+        ) AS A,
+        SUM(
+            CASE
+                WHEN grade >= 60
+                     AND grade < 70 THEN 1
+                ELSE 0
+            END
+        ) AS B,
+        SUM(
+            CASE
+                WHEN grade >= 50
+                     AND grade < 60 THEN 1
+                ELSE 0
+            END
+        ) AS C
+    FROM student
+""")
 
         row = c.fetchone()
 
@@ -92,4 +109,3 @@ def num_grades():
 
     except Exception as e:
         return f"Unexpected error: {e}"
-

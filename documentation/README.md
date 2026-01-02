@@ -33,3 +33,26 @@ AI:
 GitHub Kanban boards were used to track project progress and identify remaining tasks throughout development. This approach helped maintain an agile workflow and ensured that work was organized and incremental. The MoSCoW prioritization method was also applied to define project requirements, categorizing features into must-have, should-have, could-have, and won’t-have items.
 One proposed could-have feature was to allow users to define custom inputs for generating their own graphs. Ideally, users would be able to select three different age groups from a single country and calculate the average grade for each group. However, this functionality proved to be beyond the current skill level required for the project timeline. As a result, it has been identified as a potential future enhancement.
 An attempt was made to implement this feature, but challenges were encountered when trying to dynamically limit and generate Tkinter input fields based on user selections. Specifically, difficulties arose with the CRUD functionality needed to create and manage user input boxes—for example, when allowing users to graph data for multiple countries. These limitations highlighted areas for future learning and improvement, and the feature is planned for inclusion in later iterations of the project.
+
+
+Original Idea, I have played with python previously making an in terminal quiz, where the user inputted, and read directly from the terminal, I then used some fancy html and packages to ensure that I could display it on a terminal and then I deployed it to heroku... I wanted to do the same for this, as it would ease my workload considering I know how to do it. Instea dof creating a whole GUI.... But then I realized whats the point in going to university sitting in a classroom for 3 hours every week to ignore, not learn, and stick with what I know. However in my future enhancements I would also like to deploy this and add it to a portfolio!
+
+
+
+
+
+
+
+
+Things I have noticed
+A random file was introduced when running my program? I know I should go and get a proper reference, however in the panick of "what have I just spawned???" I asked ai to get a quick answer and this is what I got... As I found it super weird that once I fixed all my syntax, I suddenly started auto generating random files
+
+'Thought for 6s
+Yesss, love a “slay and debug” arc 💅
+That student_grades.db-journal file is totally normal and created by SQLite itself, not a bug in your code.
+What it is
+When SQLite writes to your database (student_grades.db), it uses a journal file to keep things safe in case something goes wrong (crash, power cut, etc).
+That’s the student_grades.db-journal file you’re seeing.
+It’s used to store changes temporarily while a transaction is in progress, so SQLite can either:
+fully commit the change, or
+roll back cleanly if something fails.'

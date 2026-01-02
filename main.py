@@ -3,6 +3,7 @@ import visuals
 import unittest
 import sys
 
+
 def main():
     database.create_database()
     suite = unittest.defaultTestLoader.discover("test")

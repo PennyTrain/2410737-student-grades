@@ -1,3 +1,4 @@
+
 import tkinter as tk
 from core_calculations import avg_grade, avg_attendance, num_passed, num_grades, num_failed
 from searching import update_suggestions, select_suggestion, perform_search
@@ -7,32 +8,33 @@ import styles
 from tkinter import ttk
 # ttk contains the new widgets from 2007
 
+
 # create an instance of the tk.Tk class, this will create the application window 
 # convention: the main window in Tkinter is called root
 def app():
     root = tk.Tk()
 
-# CONTROLLING THE WINDOW
-# This changes the title of the window
+    # CONTROLLING THE WINDOW
+    # This changes the title of the window
     root.title('Student Grades')
-# window geomtry/ size and postion of the window
-# width x height and then +x +y 
-# +y = 50, means that the windows veritcal position will be 50 pixels below the top of the screen
-# root.geometry('600x400+50+50')
-#https://www.pythontutorial.net/tkinter/tkinter-ttk/
+    # window geomtry/ size and postion of the window
+    # width x height and then +x +y 
+    # +y = 50, means that the windows veritcal position will be 50 pixels below the top of the screen
+    # root.geometry('600x400+50+50')
+    # https://www.pythontutorial.net/tkinter/tkinter-ttk/
     window_width = 650
     window_height = 985
-# get the screen dimension
+    # get the screen dimension
     screen_width = root.winfo_screenwidth()
     screen_height = root.winfo_screenheight()
-# find the center point
+    # find the center point
     center_x = int(screen_width/2 - window_width / 2)
     center_y = int(screen_height/2 - window_height / 2)
-# set the position of the window to the center of the screen
+    # set the position of the window to the center of the screen
     root.geometry(f'{window_width}x{window_height}+{center_x}+{center_y}')
     styles.apply_styles(root)
     styles.apply_background(root)
-# Title of the window
+    # Title of the window
     message = ttk.Label(root, text="Student Grade Analysis", style="Custom.TLabel")
     message.pack()
 
@@ -43,8 +45,8 @@ def app():
         text = f"{label_text}: {result}" if result is not None else f"{label_text}: No data"
         result_label.config(text=text)
 
-# https://www.w3schools.com/python/python_lambda.asp
-    
+    # https://www.w3schools.com/python/python_lambda.asp
+
     button_frame = ttk.Frame(root)
     button_frame.pack(pady=20, padx=20)
 
@@ -75,8 +77,8 @@ def app():
     button_frame.columnconfigure(0, weight=1)
     button_frame.columnconfigure(1, weight=1)
 
-# https://pythonguides.com/python-tkinter-search-box/
-# SEARCH FUNCTIONALITY
+    # https://pythonguides.com/python-tkinter-search-box/
+    # SEARCH FUNCTIONALITY
     search_var = tk.StringVar()
     search_label = ttk.Label(root, text="Search, Type Student Name:", style="Custom.TLabel")
     search_label.pack()
@@ -112,14 +114,16 @@ def app():
     button = ttk.Button(root, text="Quit", style="Custom.TButton", command=close_window)
     button.pack()
 
-
     scrape_label = ttk.Label(root, text=web_scraped(), style="Custom.TLabel")
     scrape_label.pack()
 
     try:
-    # this stops the text from being blury
+        # this stops the text from being blury
         from ctypes import windll
         windll.shcore.SetProcessDpiAwareness(1)
+    except Exception:
+        # ignore if not on Windows or call is unavailable
+        pass
     finally:
         # mainloop ensures the window remains visible, without it will appear and disappear quickly
         root.mainloop()
