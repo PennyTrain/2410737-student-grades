@@ -4,6 +4,7 @@ from core_calculations import avg_grade, avg_attendance, num_passed, num_grades,
 from searching import update_suggestions, select_suggestion, perform_search
 from graphs import make_graph
 from scraping import web_scraped
+from weatherapi import get_weather
 import styles
 from tkinter import ttk
 # ttk contains the new widgets from 2007
@@ -113,6 +114,9 @@ def app():
 
     button = ttk.Button(root, text="Quit", style="Custom.TButton", command=close_window)
     button.pack()
+
+    weather_label = ttk.Label(root, text=get_weather(), style="Custom.TLabel")
+    weather_label.pack()
 
     scrape_label = ttk.Label(root, text=web_scraped(), style="Custom.TLabel")
     scrape_label.pack()
