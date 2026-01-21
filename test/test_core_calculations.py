@@ -1,6 +1,7 @@
 import unittest
 from database import c
 
+
 class TestSQLQueries(unittest.TestCase):
     def test_select_all_from_database(self):
         c.execute("""

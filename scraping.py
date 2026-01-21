@@ -12,7 +12,10 @@ def web_scraped():
         soup = BeautifulSoup(response.text, "html.parser")
 
         address_block = soup.find_all("p", class_="text")[-1]
-        lines = [span.get_text(strip=True) for span in address_block.find_all("span")]
+        lines = [
+            span.get_text(strip=True)
+            for span in address_block.find_all("span")
+            ]
 
         name = lines[0]
         street = lines[1]

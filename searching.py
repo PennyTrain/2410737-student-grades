@@ -149,7 +149,6 @@ def perform_search(search_var, details_label):
         details_label.config(text="An error occurred while searching.")
 
 
-
 def select_suggestion(event, search_var, suggestion_list, perform_search):
     # event = a tkinter event, like in .js like a mouseclick or hover
     # perform search = if i click someone who has appeared in the drop down,

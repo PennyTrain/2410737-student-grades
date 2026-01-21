@@ -6,6 +6,7 @@ import unittest
 import os
 import sqlite3
 
+
 #https://python-basics-tutorial.readthedocs.io/en/24.3.0/test/sqlite.html
 conn = sqlite3.connect("student-data/student_grades.db")
 c = conn.cursor()
@@ -23,17 +24,17 @@ class TestCreateDB(unittest.TestCase):
                 # here I test that it has columns with names, and 
                 # if it does not i create one therefore causing a fail
                 with self.assertRaises(sqlite3.OperationalError): 
-                        c.execute("'''CREATE TABLE student \
-                      ( \
-                          student_id           INTEGER PRIMARY KEY AUTOINCREMENT, \
-                          first_name           TEXT    NOT NULL, \
-                          last_name            TEXT    NOT NUll, \
-                          age                  INTEGER NOT NULL, \
-                          email                TEXT    NOT NULL UNIQUE, \
-                          country              TEXT    NOT NULL, \
-                          attendance           FLOAT   NOT NULL, \
-                          assignment_completed BOOLEAN NOT NULL DEFAULT 0, \
-                          grade                FLOAT   NOT NULL \
-                      ); \
-                   '''")
+                        c.execute("""
+                                  CREATE TABLE student (
+                          student_id INTEGER PRIMARY KEY AUTOINCREMENT,
+                          first_name TEXT NOT NULL,
+                          last_name TEXT NOT NUll,
+                          age INTEGER NOT NULL,
+                          email TEXT NOT NULL UNIQUE,
+                          country TEXT NOT NULL,
+                          attendance FLOAT NOT NULL,
+                          assignment_completed BOOLEAN NOT NULL DEFAULT 0,
+                          grade FLOAT NOT NULL
+                      )
+                   """)
                            
