@@ -1,5 +1,4 @@
 import unittest
-import sys
 # Programs that import and use 'os' stand a better chance of being
 # portable between different platforms. Of course, they must then
 # only use functions that are defined by all platforms (e.g., unlink
@@ -10,9 +9,6 @@ import sqlite3
 #https://python-basics-tutorial.readthedocs.io/en/24.3.0/test/sqlite.html
 conn = sqlite3.connect("student-data/student_grades.db")
 c = conn.cursor()
-# python can now see the parent folder (where corecalc lives)
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-import database
 
 class TestCreateDB(unittest.TestCase):
         def test_db_exists(self):

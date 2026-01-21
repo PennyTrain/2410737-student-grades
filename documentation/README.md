@@ -36,6 +36,47 @@ An attempt was made to implement this feature, but challenges were encountered w
 
 
 Original Idea, I have played with python previously making an in terminal quiz, where the user inputted, and read directly from the terminal, I then used some fancy html and packages to ensure that I could display it on a terminal and then I deployed it to heroku... I wanted to do the same for this, as it would ease my workload considering I know how to do it. Instea dof creating a whole GUI.... But then I realized whats the point in going to university sitting in a classroom for 3 hours every week to ignore, not learn, and stick with what I know. However in my future enhancements I would also like to deploy this and add it to a portfolio!
+me ^
+AI:
+Previous experience with Python included developing an in-terminal quiz application that accepted user input directly through the terminal. That project used HTML styling and additional packages to enhance terminal display and was successfully deployed to Heroku. Initially, the same approach was considered for this project, as it would have reduced development time by building on existing knowledge rather than creating a full graphical user interface.
+
+However, during development it became clear that relying solely on familiar tools would limit learning outcomes. The purpose of attending university and engaging in weekly lectures and practical sessions is to develop new skills and explore unfamiliar technologies. For this reason, the decision was made to build a full GUI using Tkinter, rather than remaining within a terminal-based interface. Despite this, deploying the application online and adding it to a professional portfolio remains a planned future enhancement.
+
+
+Features:
+At the bottom I have scapred all contact information of another website, One I built myself!
+I have created a user input feild to plug in different students names and search my sqlite3 database, the search function works by searching both last and first names
+I have 3 different graphing buttons (i can graph: age vs grade, age vs attendance, and grade vs age)
+I have some core calculation buttons, these display the average grade, avg attendance, num of pases, num of fails, num of grades.
+I have included a neon theme throughout the tkinter gui. and I have also styled my graphs to match the same kind of neon theme.
+I have tested this to ensure it is working, a lot of the time I used something called 'TikTok Testing' it is a term I learned at work, which is basically testing it end to end and taking a video, attaching it to the ticket and ensuring it all works! For my essay I have taken screenshots
+me ^
+AI:
+Contact information displayed at the bottom of the interface is scraped from a separate website, which was also developed independently. 
+A user input field allows searching the SQLite3 database for students by name. The search functionality supports both first and last name queries.
+Three graphing options are available:
+Age vs Grade
+Age vs Attendance
+Grade vs Age
+Core calculation buttons provide:
+Average grade
+Average attendance
+Number of passes
+Number of fails
+Total number of grades
+A consistent neon-themed design is applied throughout the Tkinter GUI, with graph styling matched to the same aesthetic.
+
+How to play:
+open up the main.py file, and press the run button
+click whichever button desired
+click quit when done 
+me^
+AI:
+How to Run the Application
+Open the main.py file.
+Click the Run button.
+Select the desired feature using the on-screen buttons.
+Click Quit to exit the application.
 
 
 
@@ -46,7 +87,6 @@ Original Idea, I have played with python previously making an in terminal quiz, 
 
 Things I have noticed
 A random file was introduced when running my program? I know I should go and get a proper reference, however in the panick of "what have I just spawned???" I asked ai to get a quick answer and this is what I got... As I found it super weird that once I fixed all my syntax, I suddenly started auto generating random files
-
 'Thought for 6s
 Yesss, love a “slay and debug” arc 💅
 That student_grades.db-journal file is totally normal and created by SQLite itself, not a bug in your code.
@@ -56,3 +96,11 @@ That’s the student_grades.db-journal file you’re seeing.
 It’s used to store changes temporarily while a transaction is in progress, so SQLite can either:
 fully commit the change, or
 roll back cleanly if something fails.'
+me^
+ai:
+During development, an unexpected file appeared when running the program, which initially caused concern. After investigation, it was determined that this behavior is normal. SQLite automatically generates a .db-journal file when writing changes to a database. This journal file is used to temporarily store transaction data, allowing SQLite to safely commit changes or roll them back in the event of an error or interruption. Once transactions are completed successfully, the file may be removed automatically.
+
+
+
+
+I have not used logging debug module as I was taught that console logs make bad practice to be in production. so therefore the only thing that prints are my tests 
