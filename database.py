@@ -92,4 +92,3 @@ def create_database():
 def close_connection():
     if conn:
         conn.close()
-        print("Database connection closed")

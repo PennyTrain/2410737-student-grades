@@ -1,4 +1,3 @@
-import sqlite3
 import matplotlib.pyplot as plt
 # the import to make graphs
 import pandas as pd
@@ -89,7 +88,7 @@ def make_graph(x, y):
     global df, avg_grade_by_age, avg_att_by_age, avg_att_by_grade
 
     df = _fetch_df()
-    # <-- DB read happens here, after create_database()
+    # DB read happens here, after create_database()
 
     # https://matplotlib.org/stable/users/getting_started/
     avg_grade_by_age = (
@@ -130,4 +129,5 @@ def make_graph(x, y):
         neon_magenta_theme()
         attendance_age()
     else:
+        # is this necessary due to there only being 3 buttons
         print("That graph type isn't defined yet.")

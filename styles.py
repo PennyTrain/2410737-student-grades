@@ -1,5 +1,4 @@
 from tkinter import ttk
-import sqlite3
 import matplotlib.pyplot as plt
 from tkinter import ttk
 

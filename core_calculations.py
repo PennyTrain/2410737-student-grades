@@ -13,7 +13,7 @@ def avg_attendance():
 
 
 def get_avg(condition):
-    # condition = to any database column
+    # condition = to any numeric database column
     # that could be averaged. so only integers
     # or floats!
     if c is None:
@@ -35,7 +35,6 @@ def get_avg(condition):
 def count_by_condition(condition):
     if c is None:
         return "Database not connected"
-
     try:
         c.execute(f"SELECT COUNT(*) FROM student WHERE {condition}")
         result = c.fetchone()

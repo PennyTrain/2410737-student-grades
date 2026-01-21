@@ -10,13 +10,12 @@ def main():
     result = unittest.TextTestRunner(verbosity=2).run(suite)
 
     if not result.wasSuccessful():
-        print("Tests failed now the app will not launch.")
+        # app cannot run, open tkinter window with error
         sys.exit(1)
     try:
         visuals.app()
     finally:
         database.close_connection()
-        print("connection closed")
 
 
 if __name__ == "__main__":
