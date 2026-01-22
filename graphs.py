@@ -130,4 +130,4 @@ def make_graph(x, y):
         attendance_age()
     else:
         # is this necessary due to there only being 3 buttons
-        print("That graph type isn't defined yet.")
+        plt.close('all')

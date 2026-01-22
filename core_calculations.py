@@ -5,11 +5,13 @@ grade_condition = 40
 
 
 def avg_grade():
-    return get_avg('grade')
+    condition = 'grade'
+    return get_avg(condition)
 
 
 def avg_attendance():
-    return get_avg('attendance')
+    condition = 'attendance'
+    return get_avg(condition)
 
 
 def get_avg(condition):
@@ -78,7 +80,7 @@ def num_grades():
         ) AS B,
         SUM(
             CASE
-                WHEN grade >= 50
+                WHEN grade >= 40
                      AND grade < 60 THEN 1
                 ELSE 0
             END

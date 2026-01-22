@@ -139,6 +139,7 @@ def app():
     )
 
     def close_window():
+        make_graph(x = None, y = None)
         root.destroy()
 
     button = ttk.Button(
