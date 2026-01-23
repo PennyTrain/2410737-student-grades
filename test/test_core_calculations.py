@@ -1,5 +1,7 @@
 import unittest
 from database import c
+import sqlite3
+import core_calculations
 
 
 class TestSQLQueries(unittest.TestCase):
@@ -71,3 +73,44 @@ class TestSQLQueries(unittest.TestCase):
                 ]
 
         self.assertEqual(result, expected)
+
+
+    def test_num_passed(self):
+        # create an in-memory test database
+        conn = sqlite3.connect(":memory:")
+        c = conn.cursor()
+
+        # create a table that matches your real schema
+        c.execute("CREATE TABLE student (grade REAL)")
+        c.execute("INSERT INTO student (grade) VALUES (25), (50), (70)")
+
+        # inject the test cursor into your module
+        core_calculations.c = c
+
+        # run the function as-is
+        assert core_calculations.num_passed() == 2
+
+
+
+    def test_num_failed(self):
+        conn = sqlite3.connect(":memory:")
+        c = conn.cursor()
+        c.execute("CREATE TABLE student (grade REAL)")
+        c.execute("INSERT INTO student (grade) VALUES (25), (50), (70)")
+
+        core_calculations.c = c  # inject cursor
+
+        assert core_calculations.num_failed() == 1
+
+        
+    def test_avg_grade(self):
+        conn = sqlite3.connect(":memory:")
+        c = conn.cursor()
+        c.execute("CREATE TABLE student (grade REAL, attendance REAL)")
+        c.execute("INSERT INTO student (grade, attendance) VALUES (40, 80), (60, 90)")
+
+        core_calculations.c = c
+
+        assert core_calculations.avg_grade() == 50.0
+
+
